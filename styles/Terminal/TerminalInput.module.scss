@@ -1,0 +1,85 @@
+@import "../variables";
+
+.inputContainer {
+  display: flex;
+  width: 100%;
+}
+
+.inputStyleContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+
+  &::before {
+    content: "$:";
+    color: $brightCyan;
+  }
+}
+
+.inputPrefix {
+  visibility: visible;
+  display: flex;
+
+  * {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    // border-radius: 0 5px 5px 0;
+    @include paddingX(5px);
+  }
+
+  *::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: -8px;
+    z-index: -1;
+    transform: rotate(45deg);
+  }
+
+  &_name {
+    background-color: $brightPurple;
+
+    &::after {
+      background-color: $brightPurple;
+    }
+  }
+
+  &_domain {
+    z-index: 9;
+    background-color: $brightBlue;
+    padding-left: 15px;
+    margin-left: -3px;
+
+    &::after {
+      background-color: $brightBlue;
+    }
+  }
+
+  &_route {
+    z-index: 8;
+    padding-left: 15px;
+    margin-left: -3px;
+    background-color: $green;
+
+    &::after {
+      background-color: $green;
+    }
+  }
+}
+
+.input {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  margin-left: 2px;
+  width: 100%;
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+}

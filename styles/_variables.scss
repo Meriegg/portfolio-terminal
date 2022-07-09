@@ -1,0 +1,19 @@
+$main-bg: #171717;
+$text-primary: #fff;
+
+$green: #13a10e;
+$brightBlue: #3b78ff;
+$brightPurple: #b4009e;
+$brightCyan: #61d6d6;
+$red: #c50f1f;
+
+@mixin GlobalStyles() {
+  font-family: "Fira Code", monospace;
+  box-sizing: border-box;
+  color: $text-primary;
+}
+
+@mixin paddingX($spacing: 10px) {
+  padding-left: $spacing;
+  padding-right: $spacing;
+}
