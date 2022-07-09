@@ -1,9 +1,19 @@
+import React from "react";
 import Terminal from "../Components/Terminal/Terminal";
+import { useRouter } from "next/router";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (window.innerWidth > 550) return;
+
+    router.push("/notSupported");
+  }, []);
+
   return (
-    <div style={{ marginLeft: "40px", marginTop: "40px" }}>
+    <div style={{ margin: "20px" }}>
       <Terminal />
     </div>
   );
