@@ -31,11 +31,21 @@ export const contact = (command: string) => {
   }
 };
 
+export const source = () => {
+  window.location.href = "https://github.com/Meriegg/portfolio-terminal";
+
+  return "";
+};
+
 export const exit = () => {
   window.location.href = "https://mariodev.vercel.app";
 
   return "";
 };
+
+export const help = () => messages.HELP;
+
+export const about = () => messages.ABOUT_ME;
 
 export const clear = () => {
   const output = document.querySelector(".output");

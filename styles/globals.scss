@@ -18,3 +18,7 @@ body {
     @include GlobalStyles();
   }
 }
+
+.CLI_OUTPUT {
+  word-wrap: break-word;
+}

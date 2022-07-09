@@ -2,10 +2,10 @@ import React, { InputHTMLAttributes } from "react";
 import styles from "../../styles/Terminal/TerminalInput.module.scss";
 
 interface Props {
-  setCurrentCommand: Function;
-  executeCommand: Function;
-  currentCommand: string;
-  containerRef: React.Ref<HTMLDivElement>;
+  setcurrentcommand: Function;
+  executecommand: Function;
+  currentcommand: string;
+  containerref: React.Ref<HTMLDivElement>;
 }
 
 const TerminalInput: React.FC<
@@ -18,12 +18,12 @@ const TerminalInput: React.FC<
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code !== "Enter") return;
 
-    props.setCurrentCommand("");
-    props.executeCommand();
+    props.setcurrentcommand("");
+    props.executecommand();
   };
 
   return (
-    <div className={styles.inputContainer} ref={props.containerRef}>
+    <div className={styles.inputContainer} ref={props.containerref}>
       <div className={styles.inputPrefix}>
         <span className={styles.inputPrefix_name}>mario</span>
         <span className={styles.inputPrefix_domain}>@mariodev.vercel.app</span>
@@ -32,11 +32,11 @@ const TerminalInput: React.FC<
 
       <div className={styles.inputStyleContainer}>
         <input
-          {...props}
+          ref={props.ref}
           type="text"
           className={styles.input}
-          value={props.currentCommand}
-          onChange={(e) => props.setCurrentCommand(e.target.value)}
+          value={props.currentcommand}
+          onChange={(e) => props.setcurrentcommand(e.target.value)}
           onKeyDown={(e) => handleKeyPress(e)}
         />
       </div>

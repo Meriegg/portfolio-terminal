@@ -15,6 +15,15 @@ export default (command: string) => {
     case /exit/i.test(command):
       return commands.exit();
 
+    case /source/i.test(command):
+      return commands.source();
+
+    case /about/i.test(command):
+      return commands.about();
+
+    case /help/i.test(command):
+      return commands.help();
+
     default:
       return showError("Unknown Command.");
   }
