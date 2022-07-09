@@ -1,42 +1,39 @@
 import React from "react";
 import exec from "./interpreter";
+import { STARTING_MESSAGE } from "./messages";
 import TerminalInput from "./TerminalInput";
 
 const Terminal: React.FC = () => {
-  const [terminalLines, setTerminalLines] = React.useState<string[]>([]);
   const [currentCommand, setCurrentCommand] = React.useState<string>("");
 
   const commandsContainerRef = React.useRef<HTMLDivElement>(null);
   const terminalInputRef = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    let tempTerminalLines = [...terminalLines];
-    terminalLines.push("Copyright 2022 Mariodev");
+  const outputToCLI = (output: string) => {
+    if (!commandsContainerRef.current) return;
 
-    setTerminalLines(tempTerminalLines);
+    const containerElement = document.createElement("pre");
+    containerElement.innerHTML = output;
 
-    tempTerminalLines = [];
-  }, []);
+    commandsContainerRef.current?.append(containerElement);
+  };
 
   const executeCommand = () => {
-    let tempTerminalLines = [...terminalLines];
-    tempTerminalLines.push(exec(currentCommand));
-
     const clonedDomTerminalInput = terminalInputRef.current?.cloneNode(true);
     commandsContainerRef.current?.appendChild(
       clonedDomTerminalInput || document.createElement("div")
     );
 
-    setTerminalLines(tempTerminalLines);
+    outputToCLI(exec(currentCommand));
   };
+
+  React.useEffect(() => {
+    outputToCLI(STARTING_MESSAGE);
+  }, []);
 
   return (
     <div>
-      <div className="commands" ref={commandsContainerRef}>
-        {terminalLines.map((line, lineIndex) => (
-          <p key={lineIndex}>{line}</p>
-        ))}
-      </div>
+      <div className="output" ref={commandsContainerRef}></div>
 
       <TerminalInput
         containerRef={terminalInputRef}

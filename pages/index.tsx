@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div style={{ marginLeft: "40px", marginTop: "40px" }}>
       <Terminal />
     </div>
   );
